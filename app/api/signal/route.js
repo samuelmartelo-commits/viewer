@@ -17,7 +17,6 @@ export async function POST(request) {
     return Response.json({ error: 'No autorizado' }, { status: 401 });
   }
 
-  // El mensaje se guarda en la bandeja del rol CONTRARIO (a quien va dirigido)
   const targetRole = role === 'host' ? 'viewer' : 'host';
   const key = `signal:${room}:${targetRole}`;
 
@@ -38,8 +37,8 @@ export async function GET(request) {
   }
 
   const key = `signal:${room}:${role}`;
-  const messages = await redis.lrange(key, 0, -1); // ya vienen deserializados
-  await redis.del(key); // ya entregados, se limpian
+  const messages = await redis.lrange(key, 0, -1);
+  await redis.del(key);
 
   return Response.json({ messages });
 }
