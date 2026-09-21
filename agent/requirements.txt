@@ -1,0 +1,6 @@
+aiortc
+requests
+pyautogui
+mss
+numpy
+av
