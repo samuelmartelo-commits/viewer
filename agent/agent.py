@@ -8,8 +8,6 @@ Requisitos (una sola vez):
 
 Uso:
     python agent.py
-(Déjalo corriendo. Puedes agregarlo al Programador de tareas de Windows
-para que arranque solo al iniciar sesión.)
 """
 
 import asyncio
@@ -59,7 +57,7 @@ class ScreenTrack(MediaStreamTrack):
 
     async def recv(self):
         await asyncio.sleep(1 / self.fps)
-        img = np.array(self.sct.grab(self.monitor))[:, :, :3]  # BGRA -> BGR
+        img = np.array(self.sct.grab(self.monitor))[:, :, :3]
         frame = VideoFrame.from_ndarray(img, format="bgr24")
         self._timestamp += 1
         frame.pts = self._timestamp
