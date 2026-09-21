@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 
 const ICE_SERVERS = [
   { urls: 'stun:stun.l.google.com:19302' },
-  // TURN gratuito de respaldo para cuando la red de la oficina bloquea P2P directo
   { urls: 'turn:openrelay.metered.ca:80', username: 'openrelayproject', credential: 'openrelayproject' },
 ];
 
